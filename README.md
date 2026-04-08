@@ -49,47 +49,52 @@ Example output with uncertain claims:
 
 | AI | Status | Skill file |
 |----|--------|------------|
-| GitHub Copilot | ✅ Supported | `.github/prompts/pinocchio.prompt.md` |
-| Claude | ✅ Supported | `.github/prompts/pinocchio-claude.md` |
+| GitHub Copilot | ✅ Supported | `.github/skills/pinocchio/SKILL.md` |
+| Claude | ✅ Supported | `.claude/skills/pinocchio/SKILL.md` |
+| Any agent | ✅ Supported | `.agents/skills/pinocchio/SKILL.md` |
 
 ---
 
 ## Usage
 
-### GitHub Copilot
+### Setting up the skill directory
 
-This skill is a [GitHub Copilot reusable prompt](https://docs.github.com/en/copilot/customizing-copilot/reusing-prompts-and-instructions-in-copilot-chat) stored in `.github/prompts/pinocchio.prompt.md`.
+Skills are stored in a `skills` directory inside a supported location. Choose the scope that fits your needs:
 
-#### Option 1 — Use it in your own repo
+**Project skills** (specific to a single repository):
 
-1. Copy `.github/prompts/pinocchio.prompt.md` into your repository.
-2. In Copilot Chat, type:
+```
+.github/skills/pinocchio/SKILL.md
+.claude/skills/pinocchio/SKILL.md
+.agents/skills/pinocchio/SKILL.md
+```
+
+**Personal skills** (shared across all your projects):
+
+```
+~/.copilot/skills/pinocchio/SKILL.md
+~/.claude/skills/pinocchio/SKILL.md
+~/.agents/skills/pinocchio/SKILL.md
+```
+
+> **Important:** Skill files must be named `SKILL.md`. Skill subdirectory names should be lowercase and use hyphens for spaces.
+
+### Installing the Pinocchio skill
+
+1. Create a `skills` directory in one of the supported locations above.
+2. Create the `pinocchio` subdirectory inside it:
+   ```
+   mkdir -p .github/skills/pinocchio
+   ```
+3. Copy [`SKILL.md`](.github/skills/pinocchio/SKILL.md) from this repository into that directory.
+4. The skill is now available in your AI assistant. Invoke it by referencing it in your chat:
    ```
    #pinocchio <your question here>
    ```
-3. Every response will include the Pinocchio Score block.
 
-#### Option 2 — Reference it as a workspace instruction
+### Using with Claude
 
-Add the content of `pinocchio.prompt.md` to your `.github/copilot-instructions.md` file to apply it automatically to all Copilot interactions in that repository.
-
-#### Option 3 — Use it in a single session
-
-Paste the contents of `pinocchio.prompt.md` directly into Copilot Chat to activate the skill for the current session only.
-
----
-
-### Claude
-
-The Claude skill is stored in `.github/prompts/pinocchio-claude.md` and works as a system prompt or session instruction.
-
-#### Option 1 — Use it as a system prompt
-
-Paste the contents of `pinocchio-claude.md` as a **system prompt** when using the Claude API or any client that supports custom system prompts.
-
-#### Option 2 — Use it in a single session
-
-Paste the contents of `pinocchio-claude.md` directly at the start of your Claude conversation to activate the skill for that session only.
+Copy `SKILL.md` into `.claude/skills/pinocchio/SKILL.md` (project) or `~/.claude/skills/pinocchio/SKILL.md` (personal). The skill will be picked up automatically by any Claude-based agent that reads from those paths, or paste the contents as a system prompt in any Claude client.
 
 ---
 
