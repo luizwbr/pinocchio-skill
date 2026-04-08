@@ -1,6 +1,6 @@
 # 🪵 Pinocchio Skill
 
-A GitHub Copilot reusable prompt that turns every AI response into a self-evaluated answer with a **Hallucination Detector** block — so you always know how confident the model really is.
+A reusable prompt skill that turns every AI response into a self-evaluated answer with a **Hallucination Detector** block — so you always know how confident the model really is.
 
 ---
 
@@ -45,11 +45,22 @@ Example output with uncertain claims:
 
 ---
 
+## Supported AIs
+
+| AI | Status | Skill file |
+|----|--------|------------|
+| GitHub Copilot | ✅ Supported | `.github/prompts/pinocchio.prompt.md` |
+| Claude | ✅ Supported | `.github/prompts/pinocchio-claude.md` |
+
+---
+
 ## Usage
+
+### GitHub Copilot
 
 This skill is a [GitHub Copilot reusable prompt](https://docs.github.com/en/copilot/customizing-copilot/reusing-prompts-and-instructions-in-copilot-chat) stored in `.github/prompts/pinocchio.prompt.md`.
 
-### Option 1 — Use it in your own repo
+#### Option 1 — Use it in your own repo
 
 1. Copy `.github/prompts/pinocchio.prompt.md` into your repository.
 2. In Copilot Chat, type:
@@ -58,13 +69,27 @@ This skill is a [GitHub Copilot reusable prompt](https://docs.github.com/en/copi
    ```
 3. Every response will include the Pinocchio Score block.
 
-### Option 2 — Reference it as a workspace instruction
+#### Option 2 — Reference it as a workspace instruction
 
 Add the content of `pinocchio.prompt.md` to your `.github/copilot-instructions.md` file to apply it automatically to all Copilot interactions in that repository.
 
-### Option 3 — Use it in a single session
+#### Option 3 — Use it in a single session
 
 Paste the contents of `pinocchio.prompt.md` directly into Copilot Chat to activate the skill for the current session only.
+
+---
+
+### Claude
+
+The Claude skill is stored in `.github/prompts/pinocchio-claude.md` and works as a system prompt or session instruction.
+
+#### Option 1 — Use it as a system prompt
+
+Paste the contents of `pinocchio-claude.md` as a **system prompt** when using the Claude API or any client that supports custom system prompts.
+
+#### Option 2 — Use it in a single session
+
+Paste the contents of `pinocchio-claude.md` directly at the start of your Claude conversation to activate the skill for that session only.
 
 ---
 
