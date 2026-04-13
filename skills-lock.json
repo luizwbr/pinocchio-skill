@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "pinocchio": {
+      "source": "luizwbr/pinocchio-skill",
+      "sourceType": "github",
+      "computedHash": "f62a11cf958cd01742143b3445dea8b645f3b1ad07401aba5b9edb8e5905fcef"
+    }
+  }
+}
